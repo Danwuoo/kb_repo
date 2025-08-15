@@ -1,0 +1,1 @@
+"""Vectorization and indexing utilities."""
