@@ -14,3 +14,26 @@
 
 > 後續將會產出 Kaggle 版本的 `README.txt`。
 
+## 安裝
+
+```bash
+# A) Poetry
+pip install poetry
+poetry install
+
+# B) uv（選用。若已使用 Poetry，略過）
+# pipx install uv
+# uv pip install -r requirements.txt
+
+# 安裝 pre-commit 並啟用
+pip install pre-commit
+pre-commit install
+```
+
+## 依賴風險與對策
+
+* **固定 Python 版本**：`pyproject.toml` 內鎖定 `python = "^3.11"`，CI 亦使用 3.11。
+* **鎖檔**：建議使用 Poetry 產生 `poetry.lock`（或 `uv` 生成 `requirements.lock`）。
+* **環境快照**：`src/utils/env_probe.py` 每次提交自動寫入 `kb_local/logs/env.txt`。
+* **可重現性**：後續的 `kb_meta.json` 可加入 `schema_hash`、`source_fingerprint`、`index.params` 與 `version` 等欄位。
+

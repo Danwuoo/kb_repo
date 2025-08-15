@@ -1,0 +1,32 @@
+# 來源 API 與抓取批次配置（Bronze）
+common:
+  user_agent: "MDC-KB/0.1 (+contact:you@example.com)"
+  timeout_sec: 30
+  max_retries: 5
+  retry_backoff_sec: 2
+  log_path: "kb_local/logs/ingest_{source}.log"
+  out_dir: "kb_local/lake/bronze"
+
+sources:
+  crossref:
+    base_url: "https://api.crossref.org/works"
+    params:
+      rows: 100
+      filter: "type:journal-article"
+    rate_limit_per_sec: 20
+    since_field: "from-update-date"   # 增量切分欄位
+
+  datacite:
+    base_url: "https://api.datacite.org/works"
+    params:
+      page[size]: 100
+      resource-type-id: "dataset"
+    rate_limit_per_sec: 10
+    cursor_param: "page[cursor]"
+    since_field: "query:updated"
+
+  s2ag:
+    # 如走 bulk dataset，改用本地檔案指紋；這裡保留占位
+    bulk_release: "R2025-08"
+    manifest: "kb_local/data_raw/s2/manifest.json"
+

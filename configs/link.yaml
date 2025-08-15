@@ -1,0 +1,21 @@
+# Silver：正規化與連結
+normalize:
+  alias_norm_version: "1.0.0"
+  greek_map: true
+  latex_cleanup: true
+  html_unescape: true
+  trim_punct: true
+
+keys:
+  publication_primary: "doi"
+  dataset_primary:
+    prefer: ["doi", "accession"]
+
+edges:
+  evidence_agg: "sum"  # sum|max
+  conflict_queue: "kb_local/logs/resolve_queue.csv"
+
+io:
+  bronze_dir: "kb_local/lake/bronze"
+  out_dir: "kb_local/lake/silver"
+

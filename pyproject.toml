@@ -1,8 +1,59 @@
-[project]
-name = "kb_repo"
+[tool.poetry]
+name = "mdc-kb"
 version = "0.1.0"
-description = "Knowledge base processing pipeline"
+description = "Make Data Count – KB Build"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{ include = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+polars = ">=0.20.0"
+pyarrow = ">=15.0.0"
+orjson = "*"
+numpy = "*"
+requests = "*"
+faiss-cpu = "*"
+hnswlib = "*"
+tqdm = "*"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+pytest-cov = "*"
+ruff = "*"
+black = "*"
+isort = "*"
+mypy = "*"
+types-requests = "*"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+select = ["E", "F", "I", "D", "UP", "B"]
+ignore = ["D203", "D213"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.11"
+strict = false
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+plugins = []
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-q --maxfail=1 --disable-warnings"
+testpaths = ["tests"]
 
 [build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
