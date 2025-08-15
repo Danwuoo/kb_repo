@@ -1,0 +1,22 @@
+# 嵌入與索引
+encoder:
+  name: "specter2_base"
+  dim: 768
+  batch_size: 64
+  normalize: true
+  device: "auto"   # cpu|cuda|auto
+
+index:
+  type: "HNSW"    # Flat|HNSW|IVF_PQ
+  metric: "ip"     # ip|l2
+  params:
+    M: 32
+    efConstruction: 200
+    efSearch: 128
+  version: "1.0.0"
+
+io:
+  kb_parquet: "kb_local/lake/gold/kb.parquet"
+  emb_path: "kb_local/artifacts/kb_emb.npy"
+  index_path: "kb_local/artifacts/kb_index.hnsw"
+

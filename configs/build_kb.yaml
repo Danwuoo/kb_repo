@@ -1,0 +1,25 @@
+# Gold：kb.parquet 與 kb_meta.json 產出
+schema:
+  required_fields:
+    - dataset_id
+    - title
+    - repo
+    - doi
+    - accession
+    - aliases
+    - url
+    - desc
+    - source
+  suggested_fields:
+    - repo_domain
+    - pid_types
+    - relations
+
+id_decision:
+  namespace_url: "https://example.org/mdc/kb"
+
+io:
+  silver_dir: "kb_local/lake/silver"
+  out_parquet: "kb_local/lake/gold/kb.parquet"
+  artifacts_dir: "kb_local/artifacts"
+
