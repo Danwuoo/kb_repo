@@ -1,5 +1,7 @@
-kb_local/data_raw/
-kb_local/logs/
+kb_local/data_raw/*
+!kb_local/data_raw/.gitkeep
+kb_local/logs/*
+!kb_local/logs/.gitkeep
 *.pyc
 __pycache__/
 .DS_Store
